@@ -11,7 +11,6 @@ public class SearchVacanciesService {
 
     private final VacancySearchRepository vacancySearchRepository;
 
-
     public VacancyCount search(String query) {
         return vacancySearchRepository.fingVacancyCount(query);
     }
