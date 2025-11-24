@@ -7,7 +7,7 @@ import ru.jobpulse.jobpulse_core.domain.repository.VacancySearchRepository;
 
 @Service
 @RequiredArgsConstructor
-public class SearchVacanciesService {
+public class VacancySearchService {
 
     private final VacancySearchRepository vacancySearchRepository;
 
