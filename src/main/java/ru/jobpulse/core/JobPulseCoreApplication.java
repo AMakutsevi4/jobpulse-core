@@ -1,4 +1,4 @@
-package ru.jobpulse.jobpulse_core;
+package ru.jobpulse.core;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -6,8 +6,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @SpringBootApplication
 public class JobPulseCoreApplication {
 
-	 static void main(String[] args) {
-		SpringApplication.run(JobPulseCoreApplication.class, args);
-	}
+    static void main(String[] args) {
+        SpringApplication.run(JobPulseCoreApplication.class, args);
+    }
 
 }
