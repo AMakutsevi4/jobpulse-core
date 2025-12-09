@@ -1,5 +1,0 @@
-databaseChangeLog:
-  - include:
-      file: V1__create-templates.sql
-      relativeToChangelogFile: true
-
