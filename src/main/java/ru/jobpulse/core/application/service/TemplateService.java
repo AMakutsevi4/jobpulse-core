@@ -2,6 +2,7 @@ package ru.jobpulse.core.application.service;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import ru.jobpulse.core.api.exception.NotFoundException;
 import ru.jobpulse.core.domain.model.CoverLetterTemplate;
 import ru.jobpulse.core.domain.repository.TemplateRepository;
 
@@ -21,7 +22,7 @@ public class TemplateService {
     }
 
     public CoverLetterTemplate getTemplate(UUID id) {
-        return repository.findById(id).orElseThrow(() -> new RuntimeException("Template not found: " + id));
+        return repository.findById(id).orElseThrow(() -> new NotFoundException("Template not found: " + id));
     }
 
     public List<CoverLetterTemplate> listTemplates() {
