@@ -1,5 +1,6 @@
 package ru.jobpulse.core.application.service;
 
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import ru.jobpulse.core.domain.model.CoverLetterTemplate;
 import ru.jobpulse.core.domain.repository.TemplateRepository;
@@ -8,16 +9,13 @@ import java.util.List;
 import java.util.UUID;
 
 @Service
+@RequiredArgsConstructor
 public class TemplateService {
 
     private final TemplateRepository repository;
 
-    public TemplateService(TemplateRepository repository) {
-        this.repository = repository;
-    }
-
     public UUID createTemplate(String title, String content) {
-        var t = new CoverLetterTemplate(UUID.randomUUID(), title, content);
+        CoverLetterTemplate t = new CoverLetterTemplate(UUID.randomUUID(), title, content);
         repository.save(t);
         return t.id();
     }
@@ -31,7 +29,7 @@ public class TemplateService {
     }
 
     public void updateTemplate(UUID id, String title, String content) {
-        getTemplate(id); // throws if not found
+        getTemplate(id);
         repository.save(new CoverLetterTemplate(id, title, content));
     }
 
@@ -41,7 +39,7 @@ public class TemplateService {
     }
 
     public String generateLetter(UUID id, String candidateName, java.util.List<String> skills) {
-        var template = getTemplate(id);
+        CoverLetterTemplate template = getTemplate(id);
         String content = template.content();
         String skillsJoined = String.join(", ", skills == null ? java.util.List.of() : skills);
         content = content.replace("{{name}}", candidateName == null ? "" : candidateName);
