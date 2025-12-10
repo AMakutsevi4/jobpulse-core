@@ -1,0 +1,17 @@
+spring:
+  application:
+    name: jobpulse-core
+
+  jpa:
+    hibernate:
+      ddl-auto: validate
+    show-sql: false
+  datasource:
+    driver-class-name: org.postgresql.Driver
+
+logging:
+  level:
+    root: info
+
+liquibase:
+  change-log: classpath:db/changelog/db.changelog-master.yaml

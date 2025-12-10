@@ -1,5 +1,6 @@
 package ru.jobpulse.core.api.controller;
 
+import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import ru.jobpulse.core.api.dto.TemplateCreateRequest;
@@ -22,7 +23,7 @@ public class TemplateController {
     }
 
     @PostMapping
-    public ResponseEntity<UUID> createTemplate(@RequestBody TemplateCreateRequest request) {
+    public ResponseEntity<UUID> createTemplate(@Valid @RequestBody TemplateCreateRequest request) {
         UUID id = service.createTemplate(request.title(), request.content());
         return ResponseEntity.ok(id);
     }
@@ -42,7 +43,7 @@ public class TemplateController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Void> updateTemplate(@PathVariable UUID id, @RequestBody TemplateCreateRequest req) {
+    public ResponseEntity<Void> updateTemplate(@PathVariable UUID id, @Valid @RequestBody TemplateCreateRequest req) {
         service.updateTemplate(id, req.title(), req.content());
         return ResponseEntity.noContent().build();
     }
