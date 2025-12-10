@@ -9,5 +9,4 @@ public class JobPulseCoreApplication {
     static void main(String[] args) {
         SpringApplication.run(JobPulseCoreApplication.class, args);
     }
-
 }
