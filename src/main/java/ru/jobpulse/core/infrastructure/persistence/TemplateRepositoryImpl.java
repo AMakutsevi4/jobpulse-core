@@ -1,6 +1,7 @@
 package ru.jobpulse.core.infrastructure.persistence;
 
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Repository;
 import ru.jobpulse.core.domain.model.CoverLetterTemplate;
 import ru.jobpulse.core.domain.repository.TemplateRepository;
@@ -11,6 +12,7 @@ import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
+@Slf4j
 @Repository
 @RequiredArgsConstructor
 public class TemplateRepositoryImpl implements TemplateRepository {
@@ -21,22 +23,26 @@ public class TemplateRepositoryImpl implements TemplateRepository {
 
     @Override
     public CoverLetterTemplate save(CoverLetterTemplate template) {
+        log.debug("Saving template id={}", template.id());
         TemplateEntity e = templateMapper.toEntity(template);
         return templateMapper.toDomain(jpaRepository.save(e));
     }
 
     @Override
     public Optional<CoverLetterTemplate> findById(UUID id) {
+        log.debug("Find template by id={}", id);
         return jpaRepository.findById(id).map(templateMapper::toDomain);
     }
 
     @Override
     public List<CoverLetterTemplate> findAll() {
+        log.debug("Find all templates");
         return jpaRepository.findAll().stream().map(templateMapper::toDomain).toList();
     }
 
     @Override
     public void deleteById(UUID id) {
+        log.debug("Delete template id={}", id);
         jpaRepository.deleteById(id);
     }
 }
