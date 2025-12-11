@@ -4,12 +4,13 @@ spring:
       on-profile: dev
 
   datasource:
-    url: ${DB_URL:jdbc:postgresql://localhost:5432/jobpulse}
-    username: ${DB_USERNAME:postgres}
-    password: ${DB_PASSWORD:password}
+    url: jdbc:h2:mem:jobpulsedb
+    driver-class-name: org.h2.Driver
+    username: sa
+    password: password
 
   jpa:
-    database: POSTGRESQL
+    database: H2
     hibernate:
       ddl-auto: update
     show-sql: true
@@ -17,6 +18,9 @@ spring:
 logging:
   level:
     root: debug
+    org.springframework.web: debug
+    ru.jobpulse: debug
+    org.hibernate.sql: debug
 
 liquibase:
-  drop-first: ${LIQUIBASE_DROP_FIRST:false}
+  drop-first: ${LIQUIBASE_DROP_FIRST:true}
