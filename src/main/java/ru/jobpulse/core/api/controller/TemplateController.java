@@ -5,7 +5,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import ru.jobpulse.core.api.dto.TemplateCreateRequest;
 import ru.jobpulse.core.api.dto.TemplateResponse;
-import ru.jobpulse.core.application.service.TemplateService;
+import ru.jobpulse.core.api.service.TemplateService;
 import ru.jobpulse.core.domain.model.CoverLetterTemplate;
 
 import java.util.List;

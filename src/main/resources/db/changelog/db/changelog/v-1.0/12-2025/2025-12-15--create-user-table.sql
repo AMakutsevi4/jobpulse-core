@@ -6,7 +6,7 @@ CREATE TABLE "user" (
     fio TEXT NOT NULL,
     phone_number TEXT NOT NULL UNIQUE,
     email TEXT NOT NULL UNIQUE,
-    password TEXT NOT NULL,
+    password VARCHAR NOT NULL,
     is_delete BOOLEAN DEFAULT FALSE
 );
 

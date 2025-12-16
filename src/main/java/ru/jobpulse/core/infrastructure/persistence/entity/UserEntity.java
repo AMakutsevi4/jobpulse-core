@@ -8,8 +8,7 @@ import java.util.UUID;
 
 @Entity
 @Table(name = "\"user\"")
-@Getter
-@Setter
+@Getter @Setter
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
@@ -18,10 +17,17 @@ public class UserEntity {
     @Id
     private UUID id;
 
+    private String fio;
+
+    @Column(name = "phone_number", unique = true)
+    private String phoneNumber;
+
+    @Column(unique = true)
     private String email;
 
-    private String passwordHash;
+    private String password;
 
+    @Column(name = "is_delete")
     private boolean deleted;
 
     @ManyToMany(fetch = FetchType.LAZY)

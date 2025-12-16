@@ -5,7 +5,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
-import ru.jobpulse.core.application.service.SearchVacanciesService;
+import ru.jobpulse.core.api.service.SearchVacanciesService;
 import ru.jobpulse.core.domain.model.VacancyCount;
 
 @RestController

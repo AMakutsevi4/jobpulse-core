@@ -3,12 +3,18 @@ package ru.jobpulse.core.api.controller;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseStatus;
+import org.springframework.web.bind.annotation.RestController;
 import ru.jobpulse.core.api.dto.CreateUserRequest;
 import ru.jobpulse.core.api.dto.UserResponse;
-import ru.jobpulse.core.application.service.UserService;
+import ru.jobpulse.core.api.service.UserService;
 
+import java.util.List;
 import java.util.UUID;
 
 @RestController
@@ -18,19 +24,19 @@ public class UserController {
 
     private final UserService userService;
 
-    /**
-     * Создание пользователя.
-     * Админ создается ТОЛЬКО миграцией.
-     * Все пользователи создаются с ролью USER.
-     */
     @PostMapping
-    public ResponseEntity<UserResponse> create(@Valid @RequestBody CreateUserRequest request) {
-        UserResponse user = userService.createUser(request);
-        return ResponseEntity.status(HttpStatus.CREATED).body(user);
+    @ResponseStatus(HttpStatus.CREATED)
+    public UserResponse create(@Valid @RequestBody CreateUserRequest request) {
+        return userService.createUser(request);
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<UserResponse> get(@PathVariable UUID id) {
-        return ResponseEntity.ok(userService.getById(id));
+    public UserResponse get(@PathVariable UUID id) {
+        return userService.getById(id);
+    }
+
+    @GetMapping
+    public List<UserResponse> getAll() {
+        return userService.getAll();
     }
 }

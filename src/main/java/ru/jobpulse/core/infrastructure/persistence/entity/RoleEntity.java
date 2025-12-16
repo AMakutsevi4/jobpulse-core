@@ -1,10 +1,11 @@
 package ru.jobpulse.core.infrastructure.persistence.entity;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
-import lombok.*;
+import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import ru.jobpulse.core.domain.model.user.RoleType;
 
 import java.util.UUID;
 
@@ -18,5 +19,6 @@ public class RoleEntity {
     @Id
     private UUID id;
 
-    private String name;
+    @Enumerated(EnumType.STRING)
+    private RoleType type;
 }

@@ -9,9 +9,11 @@ spring:
     password: ${DB_PASSWORD:password}
 
   jpa:
-    database: POSTGRESQL
     hibernate:
       ddl-auto: validate
+
+  liquibase:
+    drop-first: ${LIQUIBASE_DROP_FIRST:false}
 
 hh:
   api-url: https://api.hh.ru
@@ -20,7 +22,3 @@ logging:
   level:
     root: info
     ru.jobpulse: info
-    org.hibernate.sql: info
-
-liquibase:
-  drop-first: ${LIQUIBASE_DROP_FIRST:false}
