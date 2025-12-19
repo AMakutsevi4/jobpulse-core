@@ -17,7 +17,7 @@ public class RoleRepositoryImpl implements RoleRepository {
 
     @Override
     public Role getByType(RoleType type) {
-        return jpaRepository.findByName(type.name())
+        return jpaRepository.findByType(type)
                 .map(mapper::toDomain)
                 .orElseThrow(() -> new IllegalStateException("Role not found: " + type));
     }

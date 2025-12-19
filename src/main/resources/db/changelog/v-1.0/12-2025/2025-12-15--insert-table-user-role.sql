@@ -6,12 +6,11 @@ VALUES
 ('00000000-0000-0000-0000-000000000001', 'ADMIN'),
 ('00000000-0000-0000-0000-000000000002', 'USER');
 
-INSERT INTO "user"
-(id, fio, phone_number, email, password, is_delete)
+INSERT INTO "user"(id, fio, phone_number, email, password, is_delete)
 VALUES
 (
 '00000000-0000-0000-0000-000000000010',
-'Admin',
+'Hello World',
 '0000000000',
 'admin@jobpulse.dev',
 '$2a$10$HASH',

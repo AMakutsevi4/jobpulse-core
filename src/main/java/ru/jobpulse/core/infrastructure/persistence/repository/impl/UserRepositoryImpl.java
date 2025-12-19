@@ -1,7 +1,13 @@
 package ru.jobpulse.core.infrastructure.persistence.repository.impl;
 
+import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 import ru.jobpulse.core.domain.model.user.User;
 import ru.jobpulse.core.domain.repository.UserRepository;
 import ru.jobpulse.core.infrastructure.persistence.entity.UserEntity;
@@ -18,6 +24,7 @@ public class UserRepositoryImpl implements UserRepository {
 
     private final UserJpaRepository jpaRepository;
     private final UserMapper mapper;
+    private final UserDetailsService userDetailsService;
 
     @Override
     public void save(User user) {
@@ -41,4 +48,37 @@ public class UserRepositoryImpl implements UserRepository {
                 .map(mapper::toDomain)
                 .toList();
     }
+//
+//    public User getUserByPhoneNumber(String phoneNumber) {
+//        return userRepository.getUserByPhoneNumber(phoneNumber).orElseThrow(()
+//                -> new EntityNotFoundException("User with phone number: " + phoneNumber + " not found"));
+//    }
+//
+//    @Transactional
+//    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+//        User user;
+//
+//        if (username.matches("^\\+?[0-9\\-\\s]*$")) {
+//            user = getUserByPhoneNumber(username);
+//
+//            return new org.springframework.security.core.userdetails.User(
+//                    user.getPhoneNumber(),
+//                    String.valueOf(user.getPassword()),
+//                    user.getRoles()
+//                            .stream()
+//                            .map(role -> new SimpleGrantedAuthority("ROLE_" + role.getName())).toList()
+//            );
+//        } else if (username.matches("^[a-zA-Z0-9_!#$%&’*+/=?`{|}~^.-]+@[a-zA-Z0-9.-]+$")) {
+//            user = getUserByEmail(username);
+//
+//            return new org.springframework.security.core.userdetails.User(
+//                    user.getEmail(),
+//                    String.valueOf(user.getPassword()),
+//                    user.getRoles()
+//                            .stream()
+//                            .map(role -> new SimpleGrantedAuthority("ROLE_" + role.getName())).toList()
+//            );
+//        } else
+//            throw new IllegalArgumentException("Логин не соответствует номеру телефона или email адресу");
+//    }
 }

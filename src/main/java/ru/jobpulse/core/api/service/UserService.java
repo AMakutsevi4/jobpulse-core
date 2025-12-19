@@ -1,6 +1,7 @@
 package ru.jobpulse.core.api.service;
 
 import lombok.RequiredArgsConstructor;
+import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import ru.jobpulse.core.api.dto.CreateUserRequest;
@@ -55,4 +56,5 @@ public class UserService {
                 .map(mapper::toUserResponse)
                 .toList();
     }
+
 }

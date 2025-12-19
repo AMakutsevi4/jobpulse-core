@@ -16,9 +16,7 @@ import java.util.Set;
 public interface UserMapper {
 
     User toDomain(UserEntity entity);
-
     UserEntity toEntity(User domain);
-
     UserResponse toUserResponse(User domain);
 
     Role toDomain(RoleEntity entity);
