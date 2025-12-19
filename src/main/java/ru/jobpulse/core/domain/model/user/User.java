@@ -12,7 +12,7 @@ public class User {
     private final String fio;
     private final String phoneNumber;
     private final String email;
-    private final String passwordHash;
+    private final String password;
     private final Set<Role> roles;
     private final boolean deleted;
 
@@ -21,7 +21,7 @@ public class User {
             String fio,
             String phoneNumber,
             String email,
-            String passwordHash,
+            String password,
             Set<Role> roles,
             boolean deleted
     ) {
@@ -29,7 +29,7 @@ public class User {
         this.fio = fio;
         this.phoneNumber = phoneNumber;
         this.email = email;
-        this.passwordHash = passwordHash;
+        this.password = password;
         this.roles = roles;
         this.deleted = deleted;
     }
