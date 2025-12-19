@@ -1,4 +1,4 @@
-package ru.jobpulse.core.application.service;
+package ru.jobpulse.core.api.service;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;

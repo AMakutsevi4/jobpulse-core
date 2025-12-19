@@ -1,0 +1,10 @@
+databaseChangeLog:
+  - include:
+      file: 12-2025/2025-12-15--create-role-table.sql
+      relativeToChangelogFile: true
+  - include:
+      file: 12-2025/2025-12-15--create-user-table.sql
+      relativeToChangelogFile: true
+  - include:
+      file: 12-2025/2025-12-15--insert-table-user-role.sql
+      relativeToChangelogFile: true

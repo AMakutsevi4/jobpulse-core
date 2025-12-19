@@ -1,4 +1,4 @@
-package ru.jobpulse.core.infrastructure.persistence;
+package ru.jobpulse.core.infrastructure.persistence.repository.impl;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -7,6 +7,7 @@ import ru.jobpulse.core.domain.model.CoverLetterTemplate;
 import ru.jobpulse.core.domain.repository.TemplateRepository;
 import ru.jobpulse.core.infrastructure.persistence.entity.TemplateEntity;
 import ru.jobpulse.core.infrastructure.persistence.mapper.TemplateMapper;
+import ru.jobpulse.core.infrastructure.persistence.repository.TemplateJpaRepository;
 
 import java.util.List;
 import java.util.Optional;
